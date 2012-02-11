@@ -140,13 +140,18 @@ $(document).ready(function() {
 		tolerance: 'pointer',
 		drop: function(event, ui) {
 			$.gDroppedOnto = 'trash';
+			
+			// Update the position of the deleteable
+			updatePosition($.gSortId, false, false);
+
 			$('#delete_name').html(ui.draggable.find('#category_name').html());
 			$('#delete_id').val($.gSortId);
 			$('#delete_dialog').dialog('open');
+
 		}
 	});
 
-	// Hide trash can if there are categories
+	// Hide trash can if there are no categories
 	if ($('#category_table').children().length === 0) {
 		$('#trash-can').hide();
 	}
@@ -181,7 +186,6 @@ $(document).ready(function() {
 			}
 		},
 		close: function(event, ui) {
-			$('#dialog_messages').html('').css('display', 'none');
 			formReset('delete_form');
 		}
 	});
