@@ -9,7 +9,7 @@ var FADE_OPACITY = 0.05;
  * @param $type the type of message, should be error/success. If $type isn't defined
  * 	the message should already be formatted into <p>.
  */
-addMessage = function($message, $type) {
+function addMessage($message, $type) {
 	addMessageTo($message, $('#messages'), $type);
 }
 
@@ -20,7 +20,7 @@ addMessage = function($message, $type) {
  * @param $type the type of message, should be error/success. If $type isn't defined
  * 	the message should already be formatted into <p>.
  */
-addMessageTo = function($message, $element, $type) {
+function addMessageTo($message, $element, $type) {
 	if ($type === undefined) {
 		var $jqMessage = $($message);
 		$element.append($jqMessage);
@@ -53,7 +53,7 @@ function fadeMessage($jqMessage) {
  * @param $element the element where to display the success and error messages.
  * 	If it is left undefined it will default to the default message place
  */
-displayAjaxReturnMessages = function($json, $element) {
+function displayAjaxReturnMessages($json, $element) {
 	// Display success messages if it succeeded
 	if ($json.success_message !== undefined) {
 		if ($element === undefined) {
